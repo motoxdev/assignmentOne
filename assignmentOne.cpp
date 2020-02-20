@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <streambuf>
+#include <math.h>
 using namespace std;
 
 
@@ -45,6 +46,8 @@ void simpleCalc(string inputFile)
     //computing the variance
     // int C = sqrt(-2*ln(a)) * cos(2*pi*b)
 
+    //computing the standard deviation
+
 
 }
 
@@ -52,6 +55,7 @@ void probabilities(string inputFile)
 {
   ifstream fileDNA(inputFile);
   string str((istreambuf_iterator<char>(fileDNA)), istreambuf_iterator<char>());
+
 
   int AA = 0;
   int AC = 0;
@@ -172,42 +176,44 @@ void probabilities(string inputFile)
   }
 }
 
+void print()
+{
+  /*
+  cout << "The Sum of the length of the DNA strings is: " << sum << endl;
+  cout << "The Mean of the length of the DNA strings is: " << mean << endl;
+  cout << "The Variance of the length of the DNA strings is: " << variance << endl;
+  cout << "The Standard Devisation of the length of the DNA string is: " << sd << endl;
+  cout << "Here is the relative probability of each nucleotide: \n";
+  cout << "Here is the relative probability of each nucleotide bigram: \n";
+  */
+  string thousandStr = "";
+  for (int i = 0; i <= 1000; ++i)
+  {
+    double a = ((double) rand() / (RAND_MAX));
+    double b = ((double) rand() / (RAND_MAX));
+    int d = 0;
 
+    double c = sqrt(-2*log(a))*cos(2*M_PI*b);
+
+
+    thousandStr += "\n";
+  }
+}
 
 int main(int argc, char** argv)
 {
   //allowing the user to input DNA sequences
   //& making those entries lowercase
-  cout << "Hello, please input the name of the text file:" << endl;
-  string var = " ";
-  cin >> var;
+  //cout << "Hello, please input the name of the text file:" << endl;
+  //string var = " ";
+  //cin >> var;
   //cin.getline(input, 1000);
   //ifstream input;
   //input.open();
-
+  //print();
   //giving a value to the length of the string and lowercasing it
-  int length = var.size();
-  for (int i = 0; i <= length; ++i)
-  var[i] = tolower(var[i]);
-
-
-
-
-
-
-
-
-
-
-  //print statements with answers
-  cout << "The Sum of the length of the DNA strings is: \n";
-  cout << "The Mean of the length of the DNA strings is: \n";
-  cout << "The Variance of the length of the DNA strings is: \n";
-  cout << "The Standard Devisation of the length of the DNA string is: \n";
-  cout << "Here is the relative probability of each nucleotide: \n";
-  cout << "Here is the relative probability of each nucleotide bigram: \n";
+  //int length = var.size();
+  //for (int i = 0; i <= length; ++i)
+  //var[i] = tolower(var[i]);
 
 }
-
-
-//determining if info has a valid DNA sequence
