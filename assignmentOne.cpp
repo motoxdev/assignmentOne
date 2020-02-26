@@ -19,11 +19,12 @@ void check(string inputFile)
 void Calculations(string inputFile)
 {
     //finding out the number of lines of DNA and number of letters
-    int sum = 0;
+    double sum = 0;
     string line = "";
-    int numLines = 0;
+    double numLines = 0;
 
     ifstream fileDNA(inputFile);
+    double sum_s;
 
     //filtering through the data to get number of elements
     //and the number of lines/ number of DNA strings
@@ -33,7 +34,7 @@ void Calculations(string inputFile)
       {
         getline(fileDNA, line);
         numLines++;
-        int sum_s =+ (line.size() * line.size());
+        sum_s =+ (line.size() * line.size());
         for (int i = 0; i < line.size(); ++i)
         {
           sum++;
@@ -44,12 +45,12 @@ void Calculations(string inputFile)
 
 
     //computing the mean
-    int mean = sum/numLines;
+    double mean = sum/numLines;
 
     //computing the variance
     double num1 = pow(line.size() - mean, 2);
 
-    double numerator;
+    double numerator = sum_s - (2 * mean) + sum + (numLines * (mean * mean));
     double denominator = numLines;
 
     double variance = numerator/denominator;
@@ -60,25 +61,30 @@ void Calculations(string inputFile)
     string str((istreambuf_iterator<char>(fileDNA)), istreambuf_iterator<char>());
 
 
-    int AA = 0;
-    int AC = 0;
-    int AT = 0;
-    int AG = 0;
+    double AA = 0;
+    double AC = 0;
+    double AT = 0;
+    double AG = 0;
 
-    int CA = 0;
-    int CC = 0;
-    int CT = 0;
-    int CG = 0;
+    double CA = 0;
+    double CC = 0;
+    double CT = 0;
+    double CG = 0;
 
-    int TA = 0;
-    int TC = 0;
-    int TT = 0;
-    int TG = 0;
+    double TA = 0;
+    double TC = 0;
+    double TT = 0;
+    double TG = 0;
 
-    int GA = 0;
-    int GC = 0;
-    int GT = 0;
-    int GG = 0;
+    double GA = 0;
+    double GC = 0;
+    double GT = 0;
+    double GG = 0;
+
+    double A = 0;
+    double C = 0;
+    double T = 0;
+    double G = 0;
 
     for (int i = 0; i < str.size(); ++i)
     {
@@ -88,6 +94,7 @@ void Calculations(string inputFile)
       //calculating probailities for A
       if (str[i] == 'A')
       {
+        A++;
         if (str[j] == 'A')
         {
           AA++;
@@ -112,6 +119,7 @@ void Calculations(string inputFile)
       //calculating probabilities for C
       if (str[i] == 'C')
       {
+        C++;
         if (str[j] == 'A')
         {
           CA++;
@@ -135,6 +143,7 @@ void Calculations(string inputFile)
       //calculating probabilities for T
       if (str[i] == 'T')
       {
+        T++;
         if (str[j] == 'A')
         {
           TA++;
@@ -159,6 +168,7 @@ void Calculations(string inputFile)
       //calculating probabilities for G
       if (str[i] == 'G')
       {
+        G++;
         if (str[j] == 'A')
         {
           GA++;
@@ -184,9 +194,9 @@ void Calculations(string inputFile)
     {
       double a = ((double) rand() / (RAND_MAX));
       double b = ((double) rand() / (RAND_MAX));
-      int d = 0;
 
       double c = sqrt(-2*log(a))*cos(2*M_PI*b);
+      double d = (sd*c) + mean;
 
 
       thousandStr += "\n";
@@ -197,10 +207,38 @@ void Calculations(string inputFile)
     cout << "The Mean of the length of the DNA strings is: " << mean << endl;
     cout << "The Variance of the length of the DNA strings is: " << variance << endl;
     cout << "The Standard Devisation of the length of the DNA string is: " << sd << endl;
-    cout << "Here is the relative probability of each nucleotide: " << endl;
-    cout << "Here is the relative probability of each nucleotide bigram: " << endl;;
+    cout << "Here is the relative probability of each nucleotide:" << endl;
+    cout << "" << endl;
+    cout << "A:    " << A/sum << endl;
 
-}
+    cout << "C:    " << C/sum << endl;
+    cout << "T:    " << T/sum << endl;
+    cout << "G:    " << G/sum << endl;
+    cout << " "      << endl;
+    cout << "Here is the relative probability of each nucleotide bigram: " << endl;
+    cout << "AA:   " << AA/sum << endl;
+    cout << "AC:   " << AC/sum << endl;
+    cout << "AT:   " << AT/sum << endl;
+    cout << "AG:   " << AG/sum << endl;
+
+    cout << "CA:   " << CA/sum << endl;
+    cout << "CC:   " << CC/sum << endl;
+    cout << "CT:   " << CT/sum << endl;
+    cout << "CG:   " << CG/sum << endl;
+
+    cout << "TA:   " << TA << endl;
+    cout << "TC:   " << TC << endl;
+    cout << "TT:   " << TT << endl;
+    cout << "TG:   " << TG << endl;
+
+    cout << "GA:   " << GA << endl;
+    cout << "GC:   " << GC << endl;
+    cout << "GT:   " << GT << endl;
+    cout << "GG:   " << GG << endl;
+  }
+
+
+
 
 
 
