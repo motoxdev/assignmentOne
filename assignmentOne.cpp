@@ -165,7 +165,7 @@ void Calculations(string inputFile)
 
           sum++;
         }
-      }
+
       fileDNA.close();
 
 
@@ -208,34 +208,35 @@ void Calculations(string inputFile)
     cout << "The Standard Devisation of the length of the DNA string is: " << sd << endl;
     cout << "Here is the relative probability of each nucleotide:" << endl;
     cout << "" << endl;
-    cout << "A:    " << singleA << endl;
+    cout << "A:    " << singleA/sum << endl;
 
-    cout << "C:    " << singleC << endl;
-    cout << "T:    " << singleT << endl;
-    cout << "G:    " << singleG << endl;
+    cout << "C:    " << singleC/sum << endl;
+    cout << "T:    " << singleT/sum << endl;
+    cout << "G:    " << singleG/sum << endl;
     cout << " "      << endl;
     cout << "Here is the relative probability of each nucleotide bigram: " << endl;
-    cout << "AA:   " << aa << endl;
-    cout << "AC:   " << ac << endl;
-    cout << "AT:   " << at << endl;
-    cout << "AG:   " << ag << endl;
+    cout << "AA:   " << aa/(sum/2) << endl;
+    cout << "AC:   " << ac/(sum/2) << endl;
+    cout << "AT:   " << at/(sum/2) << endl;
+    cout << "AG:   " << ag/(sum/2) << endl;
 
-    cout << "CA:   " << ca << endl;
-    cout << "CC:   " << cc << endl;
-    cout << "CT:   " << ct << endl;
-    cout << "CG:   " << cg << endl;
+    cout << "CA:   " << ca/(sum/2) << endl;
+    cout << "CC:   " << cc/(sum/2) << endl;
+    cout << "CT:   " << ct/(sum/2) << endl;
+    cout << "CG:   " << cg/(sum/2) << endl;
 
-    cout << "TA:   " << ta << endl;
-    cout << "TC:   " << tc << endl;
-    cout << "TT:   " << tt << endl;
-    cout << "TG:   " << tg << endl;
+    cout << "TA:   " << ta/(sum/2) << endl;
+    cout << "TC:   " << tc/(sum/2) << endl;
+    cout << "TT:   " << tt/(sum/2) << endl;
+    cout << "TG:   " << tg/(sum/2) << endl;
 
-    cout << "GA:   " << ga << endl;
-    cout << "GC:   " << gc << endl;
-    cout << "GT:   " << gt << endl;
-    cout << "GG:   " << gg << endl;
+    cout << "GA:   " << ga/(sum/2) << endl;
+    cout << "GC:   " << gc/(sum/2) << endl;
+    cout << "GT:   " << gt/(sum/2) << endl;
+    cout << "GG:   " << gg/(sum/2) << endl;
 
-  }
+
+}
 
 
 
