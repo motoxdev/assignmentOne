@@ -26,6 +26,29 @@ void Calculations(string inputFile)
 
     ifstream fileDNA(inputFile);
     double sum_s;
+    int singleA = 0;
+    int singleC = 0;
+    int singleT = 0;
+    int singleG = 0;
+    int aa = 0;
+    int ac = 0;
+    int at = 0;
+    int ag = 0;
+
+    int ca = 0;
+    int cc = 0;
+    int ct = 0;
+    int cg = 0;
+
+    int ta = 0;
+    int tc = 0;
+    int tt = 0;
+    int tg = 0;
+
+    int ga = 0;
+    int gc = 0;
+    int gt = 0;
+    int gg = 0;
 
     //filtering through the data to get number of elements
     //and the number of lines/ number of DNA strings
@@ -35,14 +58,116 @@ void Calculations(string inputFile)
       {
         getline(fileDNA, line);
         numLines++;
-        sum_s =+ (line.size() * line.size());
-        for (int i = 0; i < line.size(); ++i)
-        {
+        sum_s += (line.size() * line.size());
+            for (int i = 0; i < line.size(); ++i)
+            {
+              int j = i + 1;
+              sum++;
+
+
+              //calculating probailities for A
+              if (line[i] == 'A')
+              {
+                singleA++;
+                if (line[j] == 'A')
+                {
+                  aa++;
+                }
+                if (line[j] == 'C')
+                {
+                  ac++;
+                }
+                if (line[j] == 'T')
+                {
+                  at++;
+                }
+                if (line[j] == 'G')
+                {
+                  ag++;
+                }
+              }
+
+
+
+
+              //calculating probabilities for C
+              if (line[i] == 'C')
+              {
+                singleC++;
+                if (line[j] == 'A')
+                {
+                  ca++;
+                }
+                if (line[j] == 'C')
+                {
+                  cc++;
+                }
+                if (line[j] == 'T')
+                {
+                  ct++;
+                }
+                if (line[j] == 'G')
+                {
+                  cg++;
+                }
+              }
+
+
+
+              //calculating probabilities for T
+              if (line[i] == 'T')
+              {
+                singleT++;
+                if (line[j] == 'A')
+                {
+                  ta++;
+                }
+                if (line[j] == 'C')
+                {
+                  tc++;
+                }
+                if (line[j] == 'T')
+                {
+                  tt++;
+                }
+                if (line[j] == 'G')
+                {
+                  tg++;
+                }
+              }
+
+
+
+
+              //calculating probabilities for G
+              if (line[i] == 'G')
+              {
+                singleG++;
+                if (line[j] == 'A')
+                {
+                  ga++;
+                }
+                if (line[j] == 'C')
+                {
+                  gc++;
+                }
+                if (line[j] == 'T')
+                {
+                  gt++;
+                }
+                if (line[j] == 'G')
+                {
+                  gg++;
+                }
+              }
+            }
+          }
+
           sum++;
         }
       }
       fileDNA.close();
-    }
+
 
 
     //computing the mean
@@ -59,136 +184,8 @@ void Calculations(string inputFile)
     //computing the standard deviation
     double sd = sqrt(variance);
 
-    string str((istreambuf_iterator<char>(fileDNA)), istreambuf_iterator<char>());
 
 
-    double aa = 0;
-    double ac = 0;
-    double at = 0;
-    double ag = 0;
-
-    double ca = 0;
-    double cc = 0;
-    double ct = 0;
-    double cg = 0;
-
-    double ta = 0;
-    double tc = 0;
-    double tt = 0;
-    double tg = 0;
-
-    double ga = 0;
-    double gc = 0;
-    double gt = 0;
-    double gg = 0;
-
-    double singleA = 0;
-    double singleC = 0;
-    double singleT = 0;
-    double singleG = 0;
-    double single = 4;
-
-    for (int i = 0; i < str.size(); ++i)
-    {
-      int j = i + 1;
-
-
-      //calculating probailities for A
-      if (str[i] == 'A')
-      {
-        singleA++;
-        if (str[j] == 'A')
-        {
-          aa++;
-        }
-        if (str[j] == 'C')
-        {
-          ac++;
-        }
-        if (str[j] == 'T')
-        {
-          at++;
-        }
-        if (str[j] == 'G')
-        {
-          ag++;
-        }
-      }
-
-
-
-
-      //calculating probabilities for C
-      if (str[i] == 'C')
-      {
-        singleC++;
-        if (str[j] == 'A')
-        {
-          ca++;
-        }
-        if (str[j] == 'C')
-        {
-          cc++;
-        }
-        if (str[j] == 'T')
-        {
-          ct++;
-        }
-        if (str[j] == 'G')
-        {
-          cg++;
-        }
-      }
-
-
-
-      //calculating probabilities for T
-      if (str[i] == 'T')
-      {
-        singleT++;
-        if (str[j] == 'A')
-        {
-          ta++;
-        }
-        if (str[j] == 'C')
-        {
-          tc++;
-        }
-        if (str[j] == 'T')
-        {
-          tt++;
-        }
-        if (str[j] == 'G')
-        {
-          tg++;
-        }
-      }
-
-
-
-
-      //calculating probabilities for G
-      if (str[i] == 'G')
-      {
-        singleG++;
-        if (str[j] == 'A')
-        {
-          ga++;
-        }
-        if (str[j] == 'C')
-        {
-          gc++;
-        }
-        if (str[j] == 'T')
-        {
-          gt++;
-        }
-        if (str[j] == 'G')
-        {
-          gg++;
-        }
-      }
-    }
 
 
     string thousandStr = "";
@@ -211,32 +208,32 @@ void Calculations(string inputFile)
     cout << "The Standard Devisation of the length of the DNA string is: " << sd << endl;
     cout << "Here is the relative probability of each nucleotide:" << endl;
     cout << "" << endl;
-    cout << "A:    " << singleA/single << endl;
+    cout << "A:    " << singleA << endl;
 
-    cout << "C:    " << singleC/sum << endl;
-    cout << "T:    " << singleT/sum << endl;
-    cout << "G:    " << singleG/sum << endl;
+    cout << "C:    " << singleC << endl;
+    cout << "T:    " << singleT << endl;
+    cout << "G:    " << singleG << endl;
     cout << " "      << endl;
     cout << "Here is the relative probability of each nucleotide bigram: " << endl;
-    cout << "AA:   " << aa/sum << endl;
-    cout << "AC:   " << ac/sum << endl;
-    cout << "AT:   " << at/sum << endl;
-    cout << "AG:   " << ag/sum << endl;
+    cout << "AA:   " << aa << endl;
+    cout << "AC:   " << ac << endl;
+    cout << "AT:   " << at << endl;
+    cout << "AG:   " << ag << endl;
 
-    cout << "CA:   " << ca/sum << endl;
-    cout << "CC:   " << cc/sum << endl;
-    cout << "CT:   " << ct/sum << endl;
-    cout << "CG:   " << cg/sum << endl;
+    cout << "CA:   " << ca << endl;
+    cout << "CC:   " << cc << endl;
+    cout << "CT:   " << ct << endl;
+    cout << "CG:   " << cg << endl;
 
-    cout << "TA:   " << ta/sum << endl;
-    cout << "TC:   " << tc/sum << endl;
-    cout << "TT:   " << tt/sum << endl;
-    cout << "TG:   " << tg/sum << endl;
+    cout << "TA:   " << ta << endl;
+    cout << "TC:   " << tc << endl;
+    cout << "TT:   " << tt << endl;
+    cout << "TG:   " << tg << endl;
 
-    cout << "GA:   " << ga/sum << endl;
-    cout << "GC:   " << gc/sum << endl;
-    cout << "GT:   " << gt/sum << endl;
-    cout << "GG:   " << gg/sum << endl;
+    cout << "GA:   " << ga << endl;
+    cout << "GC:   " << gc << endl;
+    cout << "GT:   " << gt << endl;
+    cout << "GG:   " << gg << endl;
 
   }
 
